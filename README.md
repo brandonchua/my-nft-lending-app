@@ -1,6 +1,3 @@
-# Generating a README.md file based on the provided content
-
-readme_content = """
 # NFT Lending Platform on Linea Mainnet
 
 Welcome to the NFT Lending Platform! This project demonstrates how to leverage the power of Hardhat and Linea Mainnet to build a decentralized application (DApp) for issuing and managing loans using NFTs as collateral.
