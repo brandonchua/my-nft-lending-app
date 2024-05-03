@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
+import { provider } from '../config';
 
 interface LoanProps {
     contractAddress: string;
@@ -9,11 +10,37 @@ interface LoanProps {
 const LoanPage: React.FC<LoanProps> = ({ contractAddress, contractABI }) => {
     const [borrower, setBorrower] = useState<string>('');
     const [amount, setAmount] = useState<string>('');
+    const [signer, setSigner] = useState<ethers.Signer | null>(null);
+
+    useEffect(() => {
+        const checkProvider = async () => {
+            try {
+                const blockNumber = await provider.getBlockNumber();
+                console.log("Connected to Infura, current block number:", blockNumber);
+            } catch (error) {
+                console.error("Error connecting to Infura:", error);
+            }
+        };
+        checkProvider();
+    }, []);
+
+    useEffect(() => {
+        const connectToMetaMask = async () => {
+            if (window.ethereum) {
+                try {
+                    await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
+                    setSigner(web3Provider.getSigner());
+                } catch (error) {
+                    console.error("Error connecting to MetaMask:", error);
+                }
+            }
+        };
+        connectToMetaMask();
+    }, []);
 
     const issueLoan = async () => {
-        if (window.ethereum) {
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
+        if (signer) {
             const contract = new ethers.Contract(contractAddress, contractABI, signer);
             try {
                 await contract.issueLoan(borrower, ethers.utils.parseEther(amount));
@@ -22,6 +49,8 @@ const LoanPage: React.FC<LoanProps> = ({ contractAddress, contractABI }) => {
                 console.error("Error issuing loan:", error);
                 alert('Error issuing loan.');
             }
+        } else {
+            alert('Signer not initialized. Please connect to MetaMask.');
         }
     };
 

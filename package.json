@@ -28,6 +28,9 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@openzeppelin/contracts": "^5.0.2",
     "bootstrap": "^5.3.3",
     "ethers": "^5.7.2",
