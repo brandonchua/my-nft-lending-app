@@ -26,20 +26,33 @@ const Loan: React.FC<Props> = ({ contractAddress, contractABI }) => {
     };
 
     return (
-        <div>
+        <div className="container mt-5">
             <h2>Issue Loan</h2>
-            <input 
-                value={borrower}
-                onChange={(e) => setBorrower(e.target.value)}
-                placeholder="Enter Borrower Address"
-            />
-            <input 
-                type="number"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                placeholder="Enter Amount (ETH)"
-            />
-            <button onClick={issueLoan}>Issue</button>
+            <form className="form-inline">
+                <div className="form-group mx-sm-3 mb-2">
+                    <label htmlFor="borrower" className="sr-only">Borrower Address</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="borrower"
+                        value={borrower}
+                        onChange={(e) => setBorrower(e.target.value)}
+                        placeholder="Enter Borrower Address"
+                    />
+                </div>
+                <div className="form-group mx-sm-3 mb-2">
+                    <label htmlFor="amount" className="sr-only">Amount (ETH)</label>
+                    <input
+                        type="number"
+                        className="form-control"
+                        id="amount"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        placeholder="Enter Amount (ETH)"
+                    />
+                </div>
+                <button type="button" className="btn btn-primary mb-2" onClick={issueLoan}>Issue</button>
+            </form>
         </div>
     );
 };

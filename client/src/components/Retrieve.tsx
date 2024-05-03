@@ -26,14 +26,22 @@ const Retrieve: React.FC<Props> = ({ contractAddress, contractABI, nftAddress })
     };
 
     return (
-        <div>
+        <div className="container mt-5">
             <h2>Retrieve NFT</h2>
-            <input 
-                value={tokenId}
-                onChange={(e) => setTokenId(e.target.value)}
-                placeholder="Enter Token ID"
-            />
-            <button onClick={retrieveToken}>Retrieve</button>
+            <form className="form-inline">
+                <div className="form-group mb-2">
+                    <label htmlFor="tokenId" className="sr-only">Token ID</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="tokenId"
+                        value={tokenId}
+                        onChange={(e) => setTokenId(e.target.value)}
+                        placeholder="Enter Token ID"
+                    />
+                </div>
+                <button type="button" className="btn btn-primary mb-2" onClick={retrieveToken}>Retrieve</button>
+            </form>
         </div>
     );
 };

@@ -26,24 +26,36 @@ const LoanPage: React.FC<LoanProps> = ({ contractAddress, contractABI }) => {
     };
 
     return (
-        <div>
+        <div className="container mt-5">
             <h1>Loan Management</h1>
             <div>
                 <h2>Issue a Loan</h2>
-                <input 
-                    value={borrower}
-                    onChange={(e) => setBorrower(e.target.value)}
-                    placeholder="Borrower Address"
-                />
-                <input 
-                    type="number"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                    placeholder="Amount in ETH"
-                />
-                <button onClick={issueLoan}>Issue Loan</button>
+                <form className="form-inline">
+                    <div className="form-group mx-sm-3 mb-2">
+                        <label htmlFor="borrower" className="sr-only">Borrower Address</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="borrower"
+                            value={borrower}
+                            onChange={(e) => setBorrower(e.target.value)}
+                            placeholder="Borrower Address"
+                        />
+                    </div>
+                    <div className="form-group mx-sm-3 mb-2">
+                        <label htmlFor="amount" className="sr-only">Amount (ETH)</label>
+                        <input
+                            type="number"
+                            className="form-control"
+                            id="amount"
+                            value={amount}
+                            onChange={(e) => setAmount(e.target.value)}
+                            placeholder="Amount in ETH"
+                        />
+                    </div>
+                    <button type="button" className="btn btn-primary mb-2" onClick={issueLoan}>Issue Loan</button>
+                </form>
             </div>
-            {/* Add additional functionalities as needed */}
         </div>
     );
 };

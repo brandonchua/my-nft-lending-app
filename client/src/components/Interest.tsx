@@ -26,14 +26,22 @@ const Interest: React.FC<Props> = ({ contractAddress, contractABI }) => {
     };
 
     return (
-        <div>
+        <div className="container mt-5">
             <h2>Calculate Interest</h2>
-            <input 
-                value={borrower}
-                onChange={(e) => setBorrower(e.target.value)}
-                placeholder="Enter Borrower Address"
-            />
-            <button onClick={calculateInterest}>Calculate</button>
+            <form className="form-inline">
+                <div className="form-group mx-sm-3 mb-2">
+                    <label htmlFor="borrower" className="sr-only">Borrower Address</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="borrower"
+                        value={borrower}
+                        onChange={(e) => setBorrower(e.target.value)}
+                        placeholder="Enter Borrower Address"
+                    />
+                </div>
+                <button type="button" className="btn btn-primary mb-2" onClick={calculateInterest}>Calculate</button>
+            </form>
             {interest && <p>Interest Due: {interest} ETH</p>}
         </div>
     );

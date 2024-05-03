@@ -36,19 +36,33 @@ const Deposit: React.FC<Props> = ({ contractAddress, contractABI, nftAddress }) 
     };
 
     return (
-        <div>
+        <div className="container mt-5">
             <h2>Deposit NFT</h2>
-            <input 
-                value={tokenAddress}
-                onChange={(e) => setTokenAddress(e.target.value)}
-                placeholder="Enter Token Address"
-            />
-            <input 
-                value={tokenId}
-                onChange={(e) => setTokenId(e.target.value)}
-                placeholder="Enter Token ID"
-            />
-            <button onClick={depositToken}>Deposit</button>
+            <form className="form-inline">
+                <div className="form-group mx-sm-3 mb-2">
+                    <label htmlFor="tokenAddress" className="sr-only">Token Address</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="tokenAddress"
+                        value={tokenAddress}
+                        onChange={(e) => setTokenAddress(e.target.value)}
+                        placeholder="Enter Token Address"
+                    />
+                </div>
+                <div className="form-group mx-sm-3 mb-2">
+                    <label htmlFor="tokenId" className="sr-only">Token ID</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="tokenId"
+                        value={tokenId}
+                        onChange={(e) => setTokenId(e.target.value)}
+                        placeholder="Enter Token ID"
+                    />
+                </div>
+                <button type="button" className="btn btn-primary mb-2" onClick={depositToken}>Deposit</button>
+            </form>
         </div>
     );
 };
