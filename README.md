@@ -126,10 +126,3 @@ This project is licensed under the MIT License.
 ---
 
 Thank you for checking out our NFT Lending Platform on Linea Mainnet. We hope you find it useful and inspiring for your blockchain projects!
-"""
-
-# Writing the content to README.md
-with open("/mnt/data/README.md", "w") as f:
-    f.write(readme_content)
-
-"/mnt/data/README.md"
