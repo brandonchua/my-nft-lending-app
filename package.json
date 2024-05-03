@@ -23,10 +23,13 @@
     "electron-builder": "^24.13.3",
     "ethereum-waffle": "^4.0.10",
     "hardhat": "^2.22.3",
+    "@openzeppelin/contracts": "^5.0.2",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.2",
-    "ethers": "^5.7.2"
+    "ethers": "^5.7.2",
+    "web3": "^4.9.0"
   }
 }

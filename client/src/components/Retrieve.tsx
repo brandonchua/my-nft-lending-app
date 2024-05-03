@@ -4,9 +4,10 @@ import { ethers } from 'ethers';
 interface Props {
     contractAddress: string;
     contractABI: any;
+    nftAddress: string;
 }
 
-const Retrieve: React.FC<Props> = ({ contractAddress, contractABI }) => {
+const Retrieve: React.FC<Props> = ({ contractAddress, contractABI, nftAddress }) => {
     const [tokenId, setTokenId] = useState<string>('');
 
     const retrieveToken = async () => {
@@ -15,7 +16,7 @@ const Retrieve: React.FC<Props> = ({ contractAddress, contractABI }) => {
             const signer = provider.getSigner();
             const contract = new ethers.Contract(contractAddress, contractABI, signer);
             try {
-                await contract.withdrawCollateral(tokenId);
+                await contract.withdrawCollateral(nftAddress, tokenId);
                 alert('NFT retrieved successfully!');
             } catch (error) {
                 console.error("Error retrieving NFT:", error);
