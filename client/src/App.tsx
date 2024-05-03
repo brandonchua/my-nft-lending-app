@@ -10,6 +10,8 @@ import Interest from './components/Interest';
 import { contractAddress as nftCollateralAddress, contractABI as nftCollateralABI } from './NFTCollateral';
 import { contractAddress as loanContractAddress, contractABI as loanContractABI } from './LoanContract';
 
+import './App.css';
+
 const App: React.FC = () => {
   return (
     <Router>
